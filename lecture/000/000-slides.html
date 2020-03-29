@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Lecture .mono[000]</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Edward Rubin" />
-    <meta name="date" content="2020-01-09" />
+    <meta name="author" content="Connor Lennon" />
+    <meta name="date" content="2020-03-30" />
     <link href="000-slides_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="000-slides_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="000-slides_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -15,9 +15,9 @@
 class: center, middle, inverse, title-slide
 
 # Lecture .mono[000]
-## Why are we here?
-### Edward Rubin
-### 09 January 2020
+## What is Economics?
+### Connor Lennon
+### 30 March 2020
 
 ---
 
@@ -26,221 +26,892 @@ exclude: true
 
 ---
 class: inverse, middle
-# Admin
+# What is Economics?
 ---
 name: admin
-# Admin
+# What is Economics?
 
-.hi-slate[In-class today]
+## Definition
 
-- .b[Course website:] [https://github.com/edrubin/EC524W20/](https://github.com/edrubin/EC524W20/)
-- [Syllabus](https://raw.githack.com/edrubin/EC524W20/master/syllabus/syllabus.pdf) (on website)
+You've probably experienced a situation where you had to make a .hi-orange[choice] in which you had to make .hi[a tradeoff].
 
-.hi-slate[.mono[TODO] list]
+--
 
-- [Assignment](https://github.com/edrubin/EC524W20/tree/master/projects/kaggle-house-prices) (from Tuesday) due Thursday
-- Readings for next time:
-  - ISL Ch1–Ch2
-  - [Prediction Policy Problems](https://www.aeaweb.org/articles?id=10.1257/aer.p20151023) by Kleinberg .it[et al.] (2015)
+Maybe you had to pick whether to work a few extra hours at your job, or watch some TV on the couch, or go on a date, but you couldn't do all three.
+
+--
+
+How does an Uber driver decide when to .hi[stop] working? How does an Uber driver decide when to .hi-orange[start] working?
+
+--
+
+You may not know it, but you were unconciously solving .hi-orange[your own economic problem]!
+
+--
+
+.hi-slate[Book:] the study of how individuals and society allocate their .hi[limited resources] to satisfy their .hi-orange[unlimited wants] (Pg 6)
+
+
 ---
 class: inverse, middle
-# What's the goal?
+# Syllabus
 ---
 layout: true
-# What's the goal?
+# Syllabus
 
 ---
 name: different
 ## What's different?
 
-We've got a whole class on .hi-purple[prediction]. Why?
+First off, I want to say .hi-purple[thank you] for bearing with the University as we sort out the online education approach.
 
 --
 
-Up to this point, we've focused on causal .hi[identification/inference] of `\(\beta\)`, _i.e._,
-
-`$$\color{#6A5ACD}{\text{Y}_{i}} = \text{X}_{i} \color{#e64173}{\beta} + u_i$$`
-
-meaning we want an unbiased (consistent) and precise estimate `\(\color{#e64173}{\hat\beta}\)`.
+That being said, I want to be sure that each of you leave with a .hi[thorough] understanding of Economics (or the opportunity to acquire it).
 
 --
 
-With .hi-purple[prediction], we shift our focus to accurately estimating outcomes.
+Because of the online format, I cannot reccommend you buy the book (Principles of Microeconomics (Mateer &amp; Coppock 2e)) enough (the ebook is also fine.) You won't need it, but you'll probably do better with it. The more resources you have, the better.
+---
+name: different
+## What's different?
 
-In other words, how can we best construct `\(\color{#6A5ACD}{\hat{\text{Y}}_{i}}\)`?
+&lt;img src="images/Coppock2e.jpeg" style="display: block; margin: auto;" /&gt;
 
 ---
-## ... so?
+name: different
+## What's different?
 
-So we want "nice"-performing estimates `\(\hat y\)` instead of `\(\hat\beta\)`.
-
-.qa[Q] Can't we just use the same methods (_i.e._, OLS)?
-
---
-
-.qa[A] It depends.
---
- How well does your .hi[linear]-regression model approximate the underlying data? (And how do you plan to select your model?)
+Additionally, I'm going to give a larger focus than usual on assignments that develop understanding of the material.
 
 --
 
-.note[Recall] Least-squares regression is a great .hi[linear] estimator.
+.hi-orange[Grades] will be made up of performance across a midterm [30%], a final [35%] two types of homework assignments [30% in total, 15% each] and a writing assignment [5%].
+
+--
+
+There will be three types of 'homework' that I've customized for this course specifically: .hi[Inquizitive assessments], a writing assignment (we'll talk about this after the midterm) and .hi-slate[Smartwork] 'quizzes.'
+
+--
+
+.hi[Inquizitive:] a way to practice the material from the chapter.
+
+--
+
+.hi-slate[Smartwork:] a quiz-equivalent covering each chapter we will have.
+
+---
+name: different
+## Inquizitive and smartwork assessments
+
+.hi[Inquizitive] is a tool for you to self-assess your own understanding of the readings.
+
+--
+
+I could tell you about .hi[Inquizitive] and .hi-orange[Smartwork], but I think it's better if I just show you how they work.
+
+--
+
+before I switch to .hi[Inquizitive]/ .hi-orange[Smartwork], you should know that when you log in, you will be prompted to register for a Norton account.
+
+If you use the registration code .hi-slate["community"] you'll get access to both of these tools for free.
+
 
 ---
 layout: false
-class: clear, middle
+class: inverse, middle
+# Syllabus
+---
+#Coronavirus
 
-Data data be tricky.super[.pink[†]]—as can understanding many relationships.
+## A note about Coronavirus
+
+- I am going to try my hardest to keep my Coronavirus references to a minimum. We all get enough about Coronavirus as it is, 
+--
+however, using context-driven examples can sometimes help you understand the material better.
+
+--
+
+So, if I'm going to use an example related to the pandemic, I am going to put the following symbol at the top of the slide:
+
+.center[
+
+&lt;img src="images/caution.png" width="20%" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+
+---
+layout: true
+# Scarcity
+
+---
+## What makes a choice?
+
+What makes a choice .hi[interesting]?
+
+--
+
+.qa[ex:] You want to buy a new outfit that costs 80*$*, and you want to go out with some friends to a music festival that costs 180*$*. You have 260 dollars to spend on these things, so you bought both and gave up nothing to do so.
+
+--
+
+.qa[ex:] You want to buy a new jacket or a new pair of jeans that are the same price, but you can only afford one of them. You buy the jeans.
+
+--
+
+.qa[ex:] You get invited to go on a trip to go to Florida for spring break, but it's your Grandma's 80th birthday. You decide to go to spring break.
+
+--
+
+Are these choices interesting? .hi[which ones?]
+
+
+---
+## What makes a choice?
+
+What makes a choice .hi[interesting]?
+
+--
+
+.qa[ex:] You want to buy a new outfit that costs 80*$*, and you want to go out with some friends to a music festival that costs 180*$*. You have 260 dollars to spend on these things, so you bought both and gave up nothing to do so.
+
+--
+
+ - There really wasn't a choice here, was there? You had two choices, and you took both of them. These aren't the kind of choices we call .hi[interesting.]
+
+
+---
+## What makes a choice?
+
+What makes a choice .hi[interesting]?
+
+--
+
+.qa[ex:] You want to buy a new jacket or a new pair of jeans that are the same price, but you can only afford one of them. You buy the jeans.
+
+--
+
+This is more interesting! You got some of what you wanted, but not everything you wanted. Money, in this scenario, .hi-purple[is scarce]. 
+
+--
+
+.qa[def:] Scarcity, as used in microeconomics, is when individuals or groups of individuals want .hi-orange[more than they can have].
+
+---
+layout: true
+# Incentives
+
+---
+## More What?
+
+Good question! .hi-orange[more anything]. 
+
+--
+
+In economics, we describe things that make individuals pick one option over another as .hi-orange[incentives.] This is known as the .hi[first pillar of economics]
+
+--
+
+If you're into politics, or like to read the news, you likely have heard the word 'incentive' before.
+
+--
+
+An article from last week describes how car manufacturers are offering .hi-orange[payment deferral incentives] for car payments...
+
+--
+
+*"Ford offers six months of payment relief for eligible new car customers who finance their purchases through Ford Credit. The company pays for the first three months, and customers can defer up to three more months..."*
+
+---
+## Incentives
+
+What does the example on the last page .hi-orange[incentivize?]
+
+--
+
+If I was on the fence about buying a new Ford, I might be .hi-orange[more willing] to buy a car now that I won't have to pay for the first six months.
+
+--
+
+This is a classic example of a **positive incentive**.
+
+--
+
+A .hi[positive incentive] is anything that makes an individual .hi-orange[want to do something more.] 
+
+--
+
+By decreasing the cost of buying a car, buying a car has become .hi-orange[more attractive] so more individuals will want to do it.
+
+---
+## Incentives
+
+Not all incentives are positive though, there are also **negative incentives.**
+
+--
+
+Imagine ... a poor student is told by their parents that they .hi-orange[better get good grades or else]... .hi[*]
 
 .footnote[
-.pink[†] "Tricky" might mean nonlinear... or many other things...
+.hi[*] This has been shown to not produce good results - for best results, incentivize activities the students have control over
 ]
 
+--
+
+This is an example of a **negative incentive**. 
+--
+The parents are making the student .hi[want to do something] they otherwise would not want to do by .hi-orange[changing the cost of *not* doing it]
+
+--
+
+A .hi[negative incentive] is anything that makes someone .hi[want to do something less]
+
+---
+## Incentives
+
+The incentives we've covered so far are called .hi[direct incentives].
+
+--
+
+Do .hi[action] (*choice*) or .hi-orange[consequence] (*incentive*) is the "formula" for a direct incentive.
+--
+However, policies can have .hi[unintended consequences] by way of something called .hi-orange[indirect incentives]
+
+--
+
+Let's think about a more serious policy application:
+
+--
+
+.qa[Q:] What are some indirect impacts from having socialized healthcare, aka *medicare for all*
+
+--
+
+Let's snap our fingers and examine the United States with Medicare for All
+
+---
+
+Let's identify the .hi-orange[direct incentives] introduced through medicare for all.
+
+--
+
+.pull-left[
+- Sick people are .hi-orange[more likely] to get treatment
+
+- Checkups are cheaper! This likely means there are .hi-orange[likely fewer] ER admits
+
+- More costly for medical companies to conspire (?) with insurance carriers to drive up prices.
+]
+
+--
+
+.pull-right[
+- I probably am now .hi[more willing] to do things that might get me sick or injured
+
+- That means other people are now .hi[more likely] to get sick or injured
+
+]
+
+These things in .hi[pink] are called .hi[indirect incentives]
 
 ---
 layout: true
-class: clear
----
-exclude: true
-
+# Positive vs. Normative
 
 ---
-name: graph-example
 
-.white[blah]
-&lt;img src="000-slides_files/figure-html/plot points-1.svg" style="display: block; margin: auto;" /&gt;
----
-.pink[Linear regression]
-&lt;img src="000-slides_files/figure-html/plot ols-1.svg" style="display: block; margin: auto;" /&gt;
----
-.pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`
-&lt;img src="000-slides_files/figure-html/plot ols poly-1.svg" style="display: block; margin: auto;" /&gt;
----
-.pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`, .purple[KNN (100)]
-&lt;img src="000-slides_files/figure-html/plot knn-1.svg" style="display: block; margin: auto;" /&gt;
----
-.pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`, .purple[KNN (100)], .orange[KNN (10)]
-&lt;img src="000-slides_files/figure-html/plot knn more-1.svg" style="display: block; margin: auto;" /&gt;
----
-.pink[Linear regression], .turquoise[linear regression] `\(\color{#20B2AA}{\left( x^4 \right)}\)`, .purple[KNN (100)], .orange[KNN (10)], .slate[random forest]
-&lt;img src="000-slides_files/figure-html/plot rf-1.svg" style="display: block; margin: auto;" /&gt;
----
-class: clear, middle
-
-.note[Note] That example only had one predictor...
-
----
-layout: false
-name: tradeoffs
-# What's the goal?
-## Tradeoffs
-
-In prediction, we constantly face many tradeoffs, _e.g._,
-- .hi[flexibility] and .hi-slate[parametric structure] (and interpretability)
-- performance in .hi[training] and .hi-slate[test] samples
-- .hi[variance] and .hi-slate[bias]
+Notice, on the last slide, I didn't try to **pass judgement** on the policy overall.
 
 --
 
-As your economic training should have predicted, in each setting, we need to .b[balance the additional benefits and costs] of adjusting these tradeoffs.
+I simply identified what types of impacts we could potentially see.
 
 --
 
-Many machine-learning (ML) techniques/algorithms are crafted to optimize with these tradeoffs, but the practitioner (you) still needs to be careful.
+If I had said **We should enact medicare for all** and you disagreed with me, how would we find out which one of us was right? (I'm .hi[always] right)
+
+--
+
+.qa[The reality:] we couldn't. 
+--
+That's because *We should enact medicare for all* is a .hi[normative] statement.
 ---
-name: more-goals
-# What's the goal?
+## Normative statements
 
-There are many  reasons to step outside the world of linear regression...
-
---
-
-.hi-slate[Multi-class] classification problems
-- Rather than {0,1}, we need to classify `\(y_i\)` into 1 of K classes
-- _E.g._, ER patients: {heart attack, drug overdose, stroke, nothing}
+.hi[Normative] statements are statements which can't be tested.
 
 --
 
-.hi-slate[Text analysis] and .hi-slate[image recognition]
-- Comb though sentences (pixels) to glean insights from relationships
-- _E.g._, detect sentiments in tweets or roof-top solar in satellite imagery
+- Normally, these statements that reflect a .hi[value judgement].
 
 --
 
-.hi-slate[Unsupervised learning]
-- You don't know groupings, but you think there are relevant groups
-- _E.g._, classify spatial data into groups
+The opposite of a normative statement is a .hi-orange[positive statement].
+
+---
+## Positive statements
+
+.hi-orange[Positive] statements are statements which **can** be tested.
+
+--
+
+We .hi-orange[could test] to see if, after passing medicare for all, more patients got treatment, or if we saw fewer ER visits.
+
+--
+
+We could not test if medicare for all was a .hi[great policy].
+
+---
+## Positive vs. Normative
+
+As a test, let's see if we can find out which of the below is .hi-orange[positive] or .hi[normative]
+
+--
+
+.pull_left[
+- Giving everyone 1000$ is a great policy
+
+- Lowering interest rates will lead to an increase in defaults
+
+- Board games are really fun.
+]
+
+.pull_right[
+- You need to excercise.
+
+- Introducing affirmative action will lead to more equity.
+
+]
+
+---
+## Positive vs. Normative
+
+As a test, let's see if we can find out which of the below is .hi-orange[positive] or .hi[normative]
+
+.pull_left[
+- .hi[Giving everyone 1000$ is a great policy]
+
+- Lowering interest rates will lead to an increase in defaults
+
+- Board games are really fun.
+]
+
+.pull_right[
+- You need to excercise.
+
+- Introducing affirmative action will lead to more equity.
+
+]
+
+---
+## Positive vs. Normative
+
+As a test, let's see if we can find out which of the below is .hi-orange[positive] or .hi[normative]
+
+.pull_left[
+- .hi[Giving everyone 1000$ is a great policy]
+
+- .hi-orange[Lowering interest rates will lead to an increase in defaults]
+
+- Board games are really fun.
+]
+
+.pull_right[
+- You need to excercise.
+
+- Introducing affirmative action will lead to more equity.
+
+]
+
+---
+## Positive vs. Normative
+
+As a test, let's see if we can find out which of the below is .hi-orange[positive] or .hi[normative]
+
+.pull_left[
+- .hi[Giving everyone 1000$ is a great policy]
+
+- .hi-orange[Lowering interest rates will lead to an increase in defaults]
+
+- .hi[Board games are really fun.] 
+]
+
+.pull_right[
+- You need to excercise.
+
+- Introducing affirmative action will lead to more equity.
+
+]
+
+---
+## Positive vs. Normative
+
+As a test, let's see if we can find out which of the below is .hi-orange[positive] or .hi[normative]
+
+.pull_left[
+- .hi[Giving everyone 1000$ is a great policy]
+
+- .hi-orange[Lowering interest rates will lead to an increase in defaults]
+
+- .hi[Board games are really fun.] 
+]
+
+.pull_right[
+- .hi[You need to excercise.]
+
+- .hi-orange[Introducing affirmative action to hiring decisions will lead to more inequity.]
+
+]
+
+--
+
+Just because a statement is .hi-orange[positive] doesn't necessarily mean it's **correct**.
+
 ---
 layout: true
-class: clear, middle
+# Tradeoffs
 
 ---
-name: example-articles
-&lt;img src="images/ml-xray.png" width="90%" style="display: block; margin: auto;" /&gt;
----
-&lt;img src="images/ml-cars.png" width="90%" style="display: block; margin: auto;" /&gt;
----
-&lt;img src="images/ml-writing.png" width="90%" style="display: block; margin: auto;" /&gt;
----
-&lt;img src="images/ml-issues.jpeg" width="90%" style="display: block; margin: auto;" /&gt;
----
-# Takeaways?
 
-What are your main takeaways from these examples?
+## Why Scarcity
+
+You may ask yourself though, why do we care about scarcity? (Aside from choices withoutt scarcity is kind of boring)
 
 --
 
-.note[Mine]
+- We care about scarcity, because .hi[scarcity] implies .hi-orange[tradeoffs]
 
-- Interactions and nonlinearities likely matter
-- .it[Engineering] features/variables can be important
-- Flexibility is huge—but we still want to avoid overfitting
+--
+
+One cost we haven't talked about yet is actually one of the most precious and scarce: 
+--
+.hi[time].
+
+--
+
+Even if .hi[everything in the world were free], you .hi-orange[still wouldn't be able to do it all.]
+
+--
+
+The existance of .hi-orange[tradeoffs] also means we have to think about the cost of choices a little more carefully
 
 ---
-class: clear, middle
-
-.qa[Q] What have you learned/noticed in your first project?
-
----
-class: clear, middle
-
-.note[Next time] Start formal building blocks of prediction.
-
----
-name: sources
 layout: false
-
-# Sources
-
-Sources (articles) of images
-
-- [Deep learning and radiology ](https://www.smart2zero.com/news/algorithm-beats-radiologists-diagnosing-x-rays)
-- [Parking lot detection](https://www.smart2zero.com/news/algorithm-beats-radiologists-diagnosing-x-rays)
-- [.it[New Yorker] writing](https://www.newyorker.com/magazine/2019/10/14/can-a-machine-learn-to-write-for-the-new-yorker)
-- [Gender Shades](http://gendershades.org/overview.html)
+class: inverse, middle
+# Opportunity Costs
+---
+layout: true
+# Opportunity Costs
 
 ---
-# Table of contents
 
-.col-left[
-.small[
-#### Admin
-- [Today and upcoming](#admin)
+Making a choice is .hi[interesting] economically because choices .hi-orange[cost] something. You're probably pretty familiar with 'costs.'
 
-#### What's the goal?
-- [What's difference?](#different)
-- [Graphical example](#graph-example)
-- [Tradeoffs](#tradeoffs)
-- [More goals](#more-goals)
-- [Examples](#example-articles)
+--
 
-#### Other
-- [Image sources](#sources)
+When you pay rent, you are giving up a lot of potenial income to live somewhere.
+
+--
+
+However, you also .hi-purple[give up being able to live somewhere else.]
+
+--
+
+In economics, we call this .hi-purple[opportunity cost], or the lost benefit of receiving the next best alternative.
+
+---
+
+## Assumption Alert!
+
+--
+
+- In general, economics assumes that individuals are able to identify and choose from a .hi[menu of options], their .hi-purple[best possible choice]. 
+
+--
+
+- What makes a choice best for an individual is that it is the option the individual .hi[believes] to be best. That is, people don't have to see the future, they just act in their own self-interest with the information they have.
+
+--
+
+- Further, economics also assumes that individuals have beliefs about what their .hi-orange[next best option] is.
+
+---
+
+## Tradeoffs in Everything
+
+Let's use a simple example, choosing what to eat for dinner. For now, we can only pick one option.
+
+--
+
+.pull-left[
+.hi[Pizza]
+&lt;img src="images/flyingsquirrelpiz.jpg" style="display: block; margin: auto;" /&gt;
 ]
+
+.pull-right[
+.hi-orange[Salmon]
+&lt;img src="images/salm.png" style="display: block; margin: auto;" /&gt;
+]
+
+Let's say the .hi[pizza] costs me 29.00 and the .hi-orange[salmon] costs me 40.00
+
+---
+
+If I'm willing to pay 30.00 for the pizza, and 40.00 for the salmon, and I choose to buy the pizza...
+
+--
+
+- The price of the pizza is 29.00. This is sometimes referred to as the **accounting cost** of the pizza
+
+--
+
+- The .hi[opportunity cost] of the pizza is 40.00, if I can only pick one food and my next best option was the salmon.
+
+--
+
+- The .hi-purple[total cost] of the pizza then, is the amount paid (29.00) plus the opportunity cost (40.00) = (69.00).
+
+---
+layout: false
+class: inverse, middle
+# Thinking on the Margin
+---
+layout: true
+# Thinking on the Margin
+
+---
+
+## Evaluating Options
+
+Most choices in life, however, aren't .hi[binary] like .hi[pizza or salmon.]
+
+--
+
+- Most things are chosen by intensity, ie, choosing to do .hi[more] or .hi-purple[less] of a given thing.
+
+--
+
+- When you are deciding to drink beers and watch Netflix over studying, you probably have still done .hi[some of each]. 
+
+--
+
+- If you've already studied 6 hours today, you probably aren't going to get much out of studying for that 7th hour.
+
+--
+
+- Similarly, if you've watched all the good shows on Netflix already, and you've had 3 beers so far, watching Netflix just isn't going to seem as good of an option.
+
+---
+
+## Evaluating Options
+
+Thus it makes sense that individuals make choices .hi[on the margin], that is, they make decisions based on how much benefit they get from the .hi-purple[next unit] of something.
+
+--
+
+When my partner and I are preparing to have people come over, why do I throw an embarassing amount of stuff in my closet?
+
+--
+
+I could clean up properly, but cleaning takes .hi-orange[time.] 
+--
+Therefore likely going to do the bit of cleaning that I value most .hi[first]. I'll likely clean the thing that makes my place look tidiest .hi[first].
+
+---
+
+## Evaluating Options
+
+The .hi[marginal benefit] of cleaning the obvious things is very high.
+
+--
+
+The .hi[marginal cost] also matters: I probably won't re-carpet my living room on a whim, even if it would make my house look better.
+
+--
+
+This means I'll likely do the .hi[easiest/least costly] and .hi-orange[most effective/most beneficial] things first.
+
+---
+
+Imagine a farmer with .hi[4 bags of wheat]
+
+--
+
+With the .hi-orange[first bag of wheat] the farmer will make bread to survive.
+
+--
+
+With the .hi-purple[second bag of wheat] the farmer will make bread for his animals to eat
+
+--
+
+With the .hi[third bag of wheat] the farmer will make whiskey to sell at the market
+
+--
+
+With the .hi-slate[last bag] the farmer will make bread to feed the pigeons.
+---
+
+Imagine a farmer with .hi[4 bags of wheat], but now, he loses 1 bag of wheat. 
+
+.hi[What does the farmer do now?]
+
+The farmer probably .hi-orange[stops feeding the pigeons] rather than reduce every activity by 1/4.
+
+--
+
+.hi-slate[Why is that?] 
+--
+
+.hi[The feeding of the pigeons] provides that farmer with the lowest marginal benefit.
+---
+
+## Evaluating Options
+
+The easiest way to think about the effects of this is two-fold:
+
+--
+
+.pull_left[
+.hi[your first slice of cake]
+&lt;img src="images/hapbab.png" style="display: block; margin: auto;" /&gt;
+]
+
+.pull_right[
+.hi[your last slice of cake]
+&lt;img src="images/sadbaby.jpeg" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
-exclude: true
+
+## Evaluating Options
+
+The easiest way to think about the effects of this is two-fold:
+
+--
+ .pull_left[
+.hi[your first hour of studying]
+&lt;img src="images/firsthour.jpeg" style="display: block; margin: auto;" /&gt;
+]
+
+.pull_right[
+.hi[your 9th hour of studying]
+&lt;img src="images/lasthour.jpeg" style="display: block; margin: auto;" /&gt;
+]
+
+In short, people will tend to do the things until the point that the .hi[marginal cost] has exceeded the .hi-orange[marginal benefit]. 
+--
+If you remember nothing else from this lecture, .hi[REMEMBER THAT].
+
+---
+layout: false
+class: inverse, middle
+# Specialization
+---
+layout: true
+# Specialization
+
+---
+
+How much of the stuff you use on a regular basis did you *personally* make?
+
+--
+
+You are working on a computer right now to watch this video, that was likely made by a company.
+
+--
+
+Even more than that, a lot of the parts in your computer are made by a lot of .hi-orange[different places].
+
+--
+
+The reason for this is that an economy fundamentally functions through the exchange of goods and services.
+
+---
+
+## Gains from "Trade"
+
+For micro-economics, it probably doesn't make a lot of sense to study .hi[trade] as you normally think of it. 
+--
+However, trade between individuals and firms is an .hi-purple[integral] part of the modern day economy.
+
+--
+
+To prove it to you, I want to turn to one of the most miraculous objects in the modern day economy: 
+--
+.hi[the pencil.] It might surprise you to know this kind of pencil has only been around since the 1860s.
+
+&lt;img src="images/pencil.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+Maybe you're weird like me, but I imagine most of you have never thought about how a pencil is actually made.
+
+--
+
+Let's .hi[make a pencil.]
+
+--
+
+&lt;img src="images/pencils.jpg" width="45%" style="display: block; margin: auto;" /&gt;
+
+--
+
+Perfect! Now we need to make an eraser. What are erasers made out of?
+
+---
+
+These days, erasers are made out of .hi[Oil] and .hi-orange[pumice.]
+
+--
+
+Great. We just need to learn organic chemistry, maybe a little metalurgy to make that aluminum ring, some geology so we can locate a solid pumice supply and...
+
+--
+
+Why do all of this? I can go on Amazon right now and buy 150 #2 pencils for 12.50.
+
+--
+
+Would you rather spend ALL that effort to make your own pencil when you could simply buy some? 
+--
+Follow up question: Why is the pencil so cheap?
+
+--
+
+Because people and firms have .hi[specialized] in making each little piece of the pencil.
+
+---
+
+## Trade Creates Value
+
+Trading between people and firms in an economy inherently creates value, because each of us can .hi[specialize] in what we're best .orange[*] at
+
+.footnote[
+.orange[*]: Not necessarily best, we'll learn about this soon
+]
+
+--
+
+Even though .hi[you] don't find it worth it to go through the effort of making your own pencil, .hi-purple[someone does]. Because they do, you can give them money and they'll give you a pencil.
+
+--
+
+That's a .hi[win win] because for someone willing to pay at least 3.00 for 50 pencils, and a firm that can make those pencils for 2.50, trading pencils for money can make everyone better off.
+---
+## Trade Creates Value
+
+If the .hi[best] person at making pencils doesn't make my pencil, than who does?
+
+--
+
+The answer is in that low-price we saw on Amazon - someone's .hi-orange[opportunity cost] of gathering materials and making 150 pencils to sell them to you is .hi-purple[super low]. 
+--
+2.50 to be exact.
+
+--
+
+On Wednesday, we'll talk a bit more about this, but I wanted to set the idea up ahead of time.
+
+---
+
+## Trade Creates Value
+
+Let's do a simpler example - you have a bike you bought 4 years ago for 400 dollars. You're thinking of selling it, and you'd be willing to sell it now for 250 dollars.
+
+--
+
+Your friend, Jamie, really wants a bike. They'd be willing to buy your bike for 300 dollars.
+
+--
+
+They offer to buy your bike for 275 dollars, and you accept, since it's more than your .hi[willingness to pay] of 250.
+
+--
+
+By having the option to trade, the bike has increased in value since Jamie values the bike at 300 dollars, whereas you only valued it at 250.
+
+---
+## Trade Creates Value
+
+This process is repeated to create economies. When you work, you are exchanging your time and talents for money, which you in turn use to buy stuff.
+
+--
+
+&lt;img src="images/circflow.png" style="display: block; margin: auto;" /&gt;
+
+---
+layout: true
+# The Five Pillars of Economics
+
+---
+
+This lays out the .hi[five pillars of economics]. Though this is the first lecture, almost all of our future lectures will in some way .hi-orange[tie back] to these core concepts. In total, the pillars are...
+
+.pull_left[
+- Incentives: What makes us choose what we do
+
+- Trade-offs: How we evaluate our options
+
+- Opportuniy Cost: The cost of our next best alternative
+]
+
+.pull_right[
+- Economic Thinking (Thinking on the Margin)
+
+- Specialization (trade) creates value
+]
+
+---
+layout: true
+# Some examples
+
+---
+
+Let's test our knowledge:
+
+.qa[1)] Todd want to go camping with some friends at Sand Dune national park over the summer. 
+--
+The plan was a week, but he knows that after three days, he gets really grimy and doesn't enjoy himself. He declines to go.
+--
+
+.qa[What pillar best represents Todd's choice?]
+
+--
+
+.qa[A] Marginal Thinking
+
+---
+
+Let's test our knowledge:
+
+.qa[2)] Marissa was also invited on this trip.
+--
+Marissa would LOVE to go camping for a week over the summer, but she works full-time at a coffee shop for 15 dollars an hour. If she went, she wouldn't be able to afford her rent, and she'd rather have a place to live.
+--
+
+.qa[What pillar best represents Marissa's choice?]
+
+--
+
+.qa[A] Opportunity Cost
+
+---
+
+Let's test our knowledge:
+
+.qa[3)] The last member of the group, Donald, set up this trip. 
+--
+Donald obviously wants to go on this trip. However, he's not that experienced at camping, but owns a gigantic tent that he can bring along. Though he'd love to go camping, Donald would have a hard time doing all the work to go camping by himself, so decides to just cancel the trip.
+--
+
+.qa[What pillar best represents Donald's choice?]
+
+--
+
+.qa[A] Gains from Specialization (Trade)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
