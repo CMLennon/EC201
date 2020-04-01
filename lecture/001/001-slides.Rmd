@@ -2,6 +2,8 @@
 title: "Lecture .mono[001]"
 subtitle: "Production Possibility Frontier and Economic Modeling"
 author: "Connor Lennon"
+header-includes:
+   - \usepackage{tabularx}
 #date: "`r format(Sys.time(), '%d %B %Y')`"
 date: "01 April 2020"
 output:
@@ -271,7 +273,7 @@ The way Economists do this is by studying observed phenomenon in markets and cho
 ---
 ## Ceteris Paribus
 
-Ceteris Paribus is a term that means .hi[all else equal.]
+Ceteris Paribus is a term that means .hi[all else equal.] Alternatively, "with other conditions remaining the same."
 
 --
 
@@ -279,7 +281,7 @@ In economics, social scientists use *ceteris paribus* to mean that, outside of t
 
 --
 
-At first glance, this may seem counter-intuitive to you, but it's actually a very necessary assumption in order to understand how the economy.
+At first glance, this may seem counter-intuitive to you, but it's actually a very necessary assumption in order to understand how the economy works.
 
 ---
 ## Example
@@ -289,6 +291,8 @@ I want you to imagine that you walk up to a control panel that looks like this:
 ```{R, nuclearsilo, echo = F, out.width = '50%'}
 knitr::include_graphics('images/nuclear_silo.jpeg')
 ```
+
+--
 
 .hi[but you knew nothing about it]
 ---
@@ -302,11 +306,11 @@ One option is to just turn a bunch of dials/push buttons all at once, and then w
 
 --
 
-However, you .hi[won't know] if it was the last button/dial alone that had the effect or some combination
+However, you .hi[won't know] if it was the last button/dial alone that had the effect or if it was some combination of buttons you pushed
 
 --
 
-The other option is to turn the dials/push the buttons one at a time/a few at a time, and record the results. This lets you isolate effects from specific buttons
+The other option is to turn the dials/push the buttons one at a time/a few at a time, and record the results. This lets you isolate effects from specific buttons/dials
 ---
 ## The Modeled Economy
 
@@ -336,7 +340,7 @@ One such assumption is what variables we .hi-orange[choose to include] in a mode
 
 --
 
-Another common assumption is that we will assume humans are .hi[rational creatures] and reasonably will try to maximize their benefits whenever they make choices.
+Another common assumption is that we will assume humans are .hi[rational creatures] and reasonably will try to maximize their own incentives (consumption in most cases) whenever they make choices.
 
 --
 
@@ -363,14 +367,6 @@ Assumptions are one of the most important things to evaluate in a model - you sh
 --
 
 This is how economic models grow - by questioning the assumptions and building more complex and realistic models from them.
-
---
-
-This is a simplifying assumption, but has proven to generate good predictions of behavior. At the end of the course, we'll explore how humans sometimes do not behave this way in real life.
-
---
-
-In the history of economics however, this assumption has been fairly robust.
 
 ---
 layout: true
@@ -440,24 +436,546 @@ Now - we're going to do our very first .hi-orange[graph.] Graphs are visual repr
 
 --
 
-First though, I'm going to review how .hi[graphs] work. You guys likely know this, but I want to be thorough.
+First though, I'm going to review how .hi[graphs] work. You guys likely know this already.
+---
+layout: true
+# Graphing
+
+---
+class: inverse, middle
+
 ---
 
+## Number line
+
+The most basic graph:
+
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/graph1.png')
+```
+
+
+---
+
+## 2D Graphs
+
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/graph2.png')
+```
+
+---
+
+## Points
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/graph3.png')
+```
+
+---
+## Points
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/graph4.png')
+```
+
+---
+
+## Points
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/graph5.png')
+```
+
+---
+
+## Points
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/graph7.png')
+```
+
+$$Slope \ of\ c \to b:\ \frac{rise}{run} = \frac{3-1}{4-1}=\frac{2}{3}$$
+---
+
+## Graphs in Economic Space
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/PPF1.png')
+```
+
+---
+
+## Graphs in Economic Space
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/PPFBig1.jpg')
+```
+
+---
+
+## Graphs in Economic Space
+```{r, echo = F, out.width='80%'}
+knitr::include_graphics('images/PPF3.png')
+```
+
+---
+
+## Graphs in Economic Space
+```{r, echo = F, out.width='90%'}
+knitr::include_graphics('images/PPF4.png')
+```
+---
+layout: true
+# Learning from the PPF
+
+---
+class: inverse, middle
+
+---
+
+## PPF and Gains from Trade
+
+
+```{r, plotppfsj, out.width = '45%', out.height='45%', echo = F}
+ppfuncjohn <- function(x) -(1/3)*x + 1
+ppfuncerika <- function(x) -(1/2)*x+3
+
+p = ggplot(data = data.frame(x=0), aes(x=x))
+
+p_1 = p + stat_function(fun = ppfuncjohn) + xlim(0,7) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncjohn, xlim = c(0,7), geom = 'area', alpha = .25, fill = red_pink) + labs(title = "John's PPF")
+```
+
+```{r, plotppfse, out.width = '80%', out.height='80%', echo = F}
+p_2 = p + stat_function(fun = ppfuncerika) + xlim(0,7) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,7), geom = 'area', alpha = .25, fill = purple) + labs(title = "Erika's PPF")
+
+grid.arrange(p_2, p_1, ncol=2)
+```
+---
+
+## PPF and Gains From Trade
+```{r, echo = F}
+text_tbl <- data.frame(
+  Islanders = c("Erika", "John"),
+  Water = c(
+    6,3
+  ),
+  Fish = c(
+    3,1
+  ),
+  water = c(
+    '1/2 fish', '1/3 fish'
+  ),
+  fish = c(
+    '2 water', '3 water'
+  )
+)
+
+kable(text_tbl) %>%
+  kable_styling(c("striped", "bordered")) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "10em", background = "white") %>%
+  column_spec(3, width = "10em", background = "white") %>%
+  column_spec(4, width = "15em", background = "white") %>%
+  column_spec(5, width = "15em", background = "white") %>% 
+  add_header_above(c(" " = 1, "Max Individual Production" = 2, "Opportunity Cost" = 2))
+```
+
+--
+
+Well .hi[John's] a smart economist, so he starts thinking about how he could still survive on this island. After thinking into the night, he brings a deal to Erika.
+--
+
+He points out that every time Erika goes to get water, she gives up $\frac{1}{2}$ of a fish, but every time **he** goes out, he only gives up $\frac{1}{3}$ of a fish.
+
+---
+
+## John's Proposal
+
+John proposes that Erika do what she's best at - catching fish, while he goes and gets the water. She rightfully says that she can get .hi[more] water than John.
+
+--
+
+He concedes this point, but says:
+
+I'll trade you 2.5 of my .hi[water] for just 1 of your .hi-orange[fish].
+
+--
+
+After thinking about it, Erika agrees, because she can now have both more water and more fish than she could on her own.
+---
+
+## After Trade
+
+```{r, echo = F}
+text_tbl <- data.frame(
+  Islanders = c("Erika", "John"),
+  Water = c(
+    6,3
+  ),
+  Fish = c(
+    3,1
+  ),
+  water = c(
+    '1/2 fish', '1/3 fish'
+  ),
+  fish = c(
+    '2 water', '3 water'
+  ),
+  consumed_Water = c(
+    '2.5 (from John)',
+    '.5 (left over)'
+  ),
+  consumed_Fish = c(
+    '2 (left over)',
+    '1 (from Erika)'
+  )
+)
+
+kable(text_tbl) %>%
+  kable_styling(c("striped", "bordered")) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "10em", background = "white") %>%
+  column_spec(3, width = "10em", background = "white") %>%
+  column_spec(4, width = "15em", background = "white") %>%
+  column_spec(5, width = "15em", background = "white") %>% 
+  add_header_above(c(" " = 1, "Max Individual Production" = 2, "Opportunity Cost" = 2, "After Trading" = 2))
+```
+---
+
+```{r, plotppfsj2, out.width = '45%', out.height='45%', echo = F}
+ppfuncjohn <- function(x) -(1/3)*x + 1
+ppfuncerika <- function(x) -(1/2)*x+3
+
+p = ggplot(data = data.frame(x=0), aes(x=x))
+
+p_1 = p + stat_function(fun = ppfuncjohn) + xlim(0,7) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncjohn, xlim = c(0,7), geom = 'area', alpha = .25, fill = red_pink) + labs(title = "John's PPF") + geom_point(x = .5, y =1, color = 'red') + geom_text(x = .5, y = 1.15, label = 'after trade')
+```
+
+```{r, plotppfse2, out.width = '90%', out.height='90%', echo = F}
+p_2 = p + stat_function(fun = ppfuncerika) + xlim(0,7) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,7), geom = 'area', alpha = .25, fill = purple) + labs(title = "Erika's PPF") + geom_point(x = 2.5, y = 2, colour = 'red') + geom_text(x = 2.5, y = 2.15, label = 'after trade')
+
+grid.arrange(p_2, p_1, ncol=2)
+```
+---
+
+## PPF Trading Terms
+
+Ok, so how do we figure out what rates Erika and John would be willing to trade at?
+
+--
+
+It all boils down to the opportunity cost for each person of each .hi[good] or .hi-orange[activity]
+
+--
+```{r, echo = F}
+text_tbl <- data.frame(
+  Islanders = c("Erika", "John"),
+  Water = c(
+    '1/2 fish', '1/3 fish'
+  ),
+  Fish = c(
+    '2 water', '3 water'
+  )
+)
+
+kable(text_tbl) %>%
+  kable_styling(c("striped", "bordered")) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "10em", background = "white") %>%
+  column_spec(3, width = "10em", background = "white") %>%
+  add_header_above(c(" " = 1, "Opportunity Cost" = 2))
+```
+
+**Notice:** John's .hi[opportunity cost] for water is 1/3 of a fish.
+
+--
+
+**Notice:** Erika's .hi[opporunity cost] for water is 1/2 of a fish
+
+.hi-purple[This means we've got room for trade!]
+---
+
+## Comparative Vs. Absolute Advantage
+
+We know already that Erika can produce more fish and more water than John can. Economists would say she has .hi[absolute] advantage in producing both fish and water.
+
+--
+
+There can be benefits from trade however, so long as John has .hi-orange[comparative advantage] in something. 
+--
+The good news for John is that that is almost always the case.
+
+--
+
+.qa[Def'n:] A person, firm or nation has .hi-orange[comparative advantage] in producing a good if their .hi-purple[opportunity cost] is lower than their trading partner's.
+
+--
+
+Think of .hi-purple[opportunity cost] as the price of one good in terms of another. For instance, in our example, the opportunity cost of a fish is equal to the price of that fish in terms of water.
+
+---
+
+## Comparative Advantage and Trade
+
+Let's do a new example using countries
+
+--
+
+```{r, echo = F}
+text_tbl <- data.frame(
+  Nations = c("Italy", "Ireland"),
+  Butter = c(
+    '50 tons', '210 tons'
+  ),
+  Pasta = c(
+    '70 tons', '30 tons'
+  ),
+  butter = c('1 butter costs ? pasta', '1 butter costs ? pasta'),
+  pasta = c('1 pasta costs ? butter', '1 pasta costs ? butter')
+)
+
+kable(text_tbl) %>%
+  kable_styling(c("striped", "bordered")) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "10em", background = "white") %>%
+  column_spec(3, width = "10em", background = "white") %>%
+  column_spec(4, width = "15em", background = "white") %>%
+  column_spec(5, width = "15em", background = "white") %>% 
+  add_header_above(c(" " = 1, "Max National Production" = 2, "Opportunity Cost" = 2))
+```
+---
+
+```{r, plotppfnat1, out.width = '45%', out.height='45%', echo = F}
+ppfuncjohn <- function(x) -(1/7)*x + 30
+ppfuncerika <- function(x) -(7/5)*x+70
+
+p = ggplot(data = data.frame(x=0), aes(x=x))
+
+p_1 = p + stat_function(fun = ppfuncjohn) + xlim(0,210) + ylim(0,80) + xlab("Butter") + ylab("Pasta") + theme_minimal() + stat_function(fun = ppfuncjohn, xlim = c(0,210), geom = 'area', alpha = .25, fill = red_pink) + labs(title = "Ireland's PPF")
+```
+
+```{r, plotppfnat, out.width = '90%', out.height='90%', echo = F}
+p_2 = p + stat_function(fun = ppfuncerika) + xlim(0,210) + ylim(0,80) + xlab("Butter") + ylab("Pasta") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,70), geom = 'area', alpha = .25, fill = purple) + labs(title = "Italy's PPF")
+
+grid.arrange(p_2, p_1, ncol=2)
+```
+
+---
+
+## Comparative Advantage and Trade
+
+Let's do a new example using countries
+
+```{r, echo = F}
+text_tbl <- data.frame(
+  Nations = c("Italy", "Ireland"),
+  Butter = c(
+    '50 tons', '210 tons'
+  ),
+  Pasta = c(
+    '70 tons', '30 tons'
+  ),
+  butter = c('1 butter costs 7/5 pasta', '1 butter costs 1/7 pasta'),
+  pasta = c('1 pasta costs 5/7 butter', '1 pasta costs 7 butter')
+)
+
+kable(text_tbl) %>%
+  kable_styling(c("striped", "bordered")) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "10em", background = "white") %>%
+  column_spec(3, width = "10em", background = "white") %>%
+  column_spec(4, width = "15em", background = "white") %>%
+  column_spec(5, width = "15em", background = "white") %>% 
+  add_header_above(c(" " = 1, "Max National Production" = 2, "Opportunity Cost" = 2))
+```
+
+--
+
+Who has .hi[absolute advantage] in Pasta? 
+--
+In Butter?
+
+--
+
+Who has .hi[comparative advantage] in Pasta? 
+--
+In Butter?
+---
+
+## Finding the trading rate
+
+Back to John and Erika...
+
+--
+
+So long as the trading rate is such that: $\frac{1 \ fish}{3 \ water} \leq trading \  rate \leq \frac{1 \ fish }{2 \ water}$
+
+--
+
+Then Erika is willing to accept, because she would be getting $2\ water \leq traded\ water \leq 3\ water$ per fish.
+
+--
+
+By collaborating with John, she can take advantage of his lower opportunity cost and get more water for her fish than she could on her own.
+
+--
+
+John, on the other hand, gets $\frac{1}{3} \leq traded\ fish \leq \frac{1}{2}$ fish for every water he trades, meaning he could get as many as 1.5 fish (for 3 water) from Erika without Erika being any worse off. 
+--
+That's $50\%$ more fish than he could get on his own!
+
+---
 ## PPF modifications
 
-```{r, plot, out.width = '30%', out.height='30%', echo = F}
+Awesome! So we now have evidence that .hi[specialization] and .hi-orange[the option to trade] allows the participants to consume more than they could on their own.
+
+--
+
+But now let's play around with our assumptions here. The .hi-orange[linear] nature of the PPF is assuming opportunity costs are constant.
+
+--
+
+But remember **Marginal Thinking**?
+
+--
+
+It probably makes sense that as we spend .hi[more] time fishing, for instance, we actually catch fewer and fewer fish. So what happens if .hi-orange[opportunity costs] are not constant?
+
+---
+
+```{r, plot2, out.width = '100%', out.height='100%', echo = F}
 ppfunc <- function(x) sqrt(-x^2 + 100)
 
 p = ggplot(data = data.frame(x=0), aes(x=x))
 
-p_1 = p + stat_function(fun = ppfunc) + xlim(0,10) + ylim(0,10) + xlab("Fish") + ylab("Water") + theme_minimal() + stat_function(fun = ppfunc, xlim = c(0,10), geom = 'area', alpha = .25, fill = 'green')
+p_1 = p + stat_function(fun = ppfunc) + xlim(0,10) + ylim(0,10) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfunc, xlim = c(0,10), geom = 'area', alpha = .25, fill = 'green')
 
 p_1
 ```
+---
+
+Unfortunately - this makes finding opportunity costs kind of gross. It involves calculus, so this course won't make you do that. However, if you're interested:
+
+--
+
+We can find the opportunity cost for water by $-\frac{d\ fish}{d\ water} = \frac{water}{\sqrt{100-water^2}}$
+
+--
+
+```{r, echo = F}
+text_tbl <- data.frame(
+  Production_Level = c("Producing 5 Water", "Producing 3 Water"),
+  Water = c(
+    '~.6 fish', '~.3 fish'
+  ),
+  Fish = c(
+    '~1.7 water', '~3.2 water'
+  )
+)
+
+kable(text_tbl) %>%
+  kable_styling(c("striped", "bordered")) %>%
+  column_spec(1, bold = T, border_right = T) %>%
+  column_spec(2, width = "10em", background = "white") %>%
+  column_spec(3, width = "10em", background = "white") %>%
+  add_header_above(c("Water Produced" = 1, "Opportunity Cost" = 2))
+```
+
+---
+
+If you're more of a visual learner like myself, this graph likely will help you understand what's going on here:
+
+--
+
+```{r, echo = F, out.width = '90%'}
+knitr::include_graphics('images/nonconstppf.jpg')
+```
+
+---
+
+## Turning some dials
+
+Now that we've established a model, and how changing the assumptions change the model, let's .hi[turn some dials].
+
+--
+
+By that, I mean we're going to change the values of an .hi-orange[exogenous variable]. Specifically, we're going to introduce technology changes.
+
+--
+
+.qa[def:] Technology: anything that turns .hi[inputs] (time from our last model) into .hi-orange[outputs]. Let's look at what happens when we improve our fishing technology - maybe Erika invents a boat!
+
+---
+
+## Inventing the boat
+
+```{r, echo = F, out.width = '80%'}
+ppfuncerika <- function(x) -(1/2)*x+3
+ppfuncerika2 <- function(x) -x + 6
+p1 = p + stat_function(fun = ppfuncerika) + xlim(0,7) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,7), geom = 'area', alpha = .15, fill = purple) + labs(title = "Erika's PPF Pre-boat")
+
+p2 = p+ stat_function(fun = ppfuncerika2) + stat_function(fun = ppfuncerika2, xlim = c(0,7), geom = 'area', alpha = .25, fill = purple) + xlim(0,7) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,7), geom = 'area', alpha = .5, fill = purple) + labs(title = "Erika's PPF post-boat")
+
+grid.arrange(p1, p2, ncol=2)
+```
+---
+### What if the technology impacted both
+
+```{r, echo = F, out.width = '80%'}
+ppfuncerika <- function(x) -(1/2)*x+3
+ppfuncerika2 <- function(x) -(1/2)*x + 6
+p1 = p + stat_function(fun = ppfuncerika) + xlim(0,12) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,7), geom = 'area', alpha = .15, fill = purple) + labs(title = "Erika's PPF Pre-technology")
+
+p2 = p+ stat_function(fun = ppfuncerika2) + stat_function(fun = ppfuncerika2, xlim = c(0,12), geom = 'area', alpha = .25, fill = purple) + xlim(0,12) + ylim(0,7) + xlab("Water") + ylab("Fish") + theme_minimal() + stat_function(fun = ppfuncerika, xlim = c(0,7), geom = 'area', alpha = .5, fill = purple) + labs(title = "Erika's PPF post-technology")
+
+grid.arrange(p1, p2, ncol=2)
+```
+
+---
+## Choice between now and later
+
+--
+
+```{r, echo = F, out.width='75%', out.height = '75%'}
+knitr::include_graphics('images/growth.jpg')
+```
+
+---
+layout: true
+# Examples
+
+---
+class: inverse, middle
+
+---
+
+## Examples and Applications
+
+```{r, echo = F}
+knitr::include_graphics('images/caution.png')
+```
+---
+
+## Examples and Applications
+
+1.) .qa[What] are the likely effects from only using US-produced coronavirus tests?
+
+--
+
+.qa[A] If the tests from overseas are just as accurate as the tests here (which appears to be the case) - then our trade model says that we'll likely have .hi[fewer] tests we can perform.
+
+--
+
+2.) .qa[What] unintended consequences might forcing factories to make ventilators have on manufacturing?
+
+--
+
+.qa[A] If we think the law of increasing marginal cost (or decreasing marginal benefit) is in place here, the total manufacturing output (by unit) might fall quite a bit! However, because the demand (we'll talk about this next week) for those machines is so high, we can't say for certain what will happen to revenue.
 
 ---
 exclude: true
 
-```{R, save pdfs, include = F, eval = F}
+```{R, save pdfs 1, include = F, eval = F}
 system("`npm bin`/decktape remark 001-slides.html 001-slides.pdf --chrome-arg=--allow-file-access-from-files --slides 1-100")
+```
+
+```{R, save pdfs, include = F, eval = F}
+# PDF with pauses
+#xaringan::decktape("000-slides.html", "000-slides.pdf")
+# PDF without pauses
+pagedown::chrome_print("001-slides.html", "001-slides-no-pause.pdf")
 ```
